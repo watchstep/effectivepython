@@ -45,6 +45,8 @@ def close_open_files():
 
 atexit.register(close_open_files)
 
+# 내부 상태에서 원소가 없는 경우를 처리할 때는
+# setdefault보다 defaultdict를 사용하자
 
 # Example 1
 visits = {
@@ -91,7 +93,7 @@ class Visits:
         self.data = defaultdict(set)
 
     def add(self, country, city):
-        self.data[country].add(city)
+        self.data[country].add(city) # set은 add() list는 append()
 
 visits = Visits()
 visits.add('England', 'Bath')

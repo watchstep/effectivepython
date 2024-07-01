@@ -84,16 +84,19 @@ for name, count in zip(names, counts):
         longest_name = name
         max_count = count
 assert longest_name == 'Cecilia'
-
+# zip은 둘 이상의 iterator를 지연 계산 제너레이터;lazy generator를 사용해 묶어줌
 
 # Example 5
 names.append('Rosalind')
 for name, count in zip(names, counts):
     print(name)
-
+# input iterator의 길이가 서로 다를 때 조심
+# ouput은 가장 짧은 input에 맞춰서
 
 # Example 6
 import itertools
 
 for name, count in itertools.zip_longest(names, counts):
     print(f'{name}: {count}')
+# 길이가 같지 않다면 itertools.zip_longest 대신 사용 추천
+# zip_longest는 fillvalue를 사용해 빈 값을 채워줌 (기본값은 None)

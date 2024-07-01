@@ -54,14 +54,14 @@ snack_calories = {
 }
 items = tuple(snack_calories.items())
 print(items)
-
+# immutable 순서쌍을 만들어낼 수 있는 tuple (변경 불가능)
 
 # Example 2
 item = ('Peanut butter', 'Jelly')
 first = item[0]
 second = item[1]
 print(first, 'and', second)
-
+# 인덱스를 이용한 접근
 
 # Example 3
 try:
@@ -77,7 +77,7 @@ else:
 item = ('Peanut butter', 'Jelly')
 first, second = item  # Unpacking
 print(first, 'and', second)
-
+# 인덱스보다 대입을 사용해 unpacking 추천
 
 # Example 5
 favorite_snacks = {
@@ -115,8 +115,10 @@ def bubble_sort(a):
 		for i in range(1, len(a)):
 			if a[i] < a[i-1]:
 				a[i-1], a[i] = a[i], a[i-1]  # Swap
+                # unpacking을 이용한 swap 
 
 names = ['pretzels', 'carrots', 'arugula', 'bacon']
+
 bubble_sort(names)
 print(names)
 
@@ -131,5 +133,5 @@ for i in range(len(snacks)):
 
 
 # Example 9
-for rank, (name, calories) in enumerate(snacks, 1):
+for rank, (name, calories) in enumerate(snacks, 1): # start=1로 주고 싶을 때 enumerate(, start=1)
 	print(f'#{rank}: {name} has {calories} calories')

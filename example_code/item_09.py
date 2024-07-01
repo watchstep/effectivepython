@@ -45,7 +45,7 @@ def close_open_files():
 
 atexit.register(close_open_files)
 
-
+# for/while loop 뒤의 else block 사용하지 말라 
 # Example 1
 for i in range(3):
     print('Loop', i)
@@ -95,6 +95,8 @@ def coprime(a, b):
         if a % i == 0 and b % i == 0:
             return False
     return True
+# 원하는 조건을 찾자마자 함수를 빠르게 return
+# loop 빠져나갈 때 return 사용
 
 assert coprime(4, 9)
 assert not coprime(3, 6)
@@ -108,6 +110,9 @@ def coprime_alternate(a, b):
             is_coprime = False
             break
     return is_coprime
+
+# loop 안에서 원하는 대상을 찾았는지 나타내는 결과 변수 (is_coprime) 사용
+# 원하는 대상 찾자마자 break로 loop 탈출
 
 assert coprime_alternate(4, 9)
 assert not coprime_alternate(3, 6)

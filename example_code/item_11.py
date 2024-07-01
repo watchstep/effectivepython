@@ -103,23 +103,25 @@ b[1] = 99
 print('After:    ', b)
 print('No change:', a)
 
+# 리스트 슬라이싱한 결과는 완전히 새로운 리스트
+# 원래 리스트에 대한 참조는 그대로 유지
+# 슬라이싱 리스트 변경해도 원래 리스트는 바꾸지 않음
 
 # Example 9
 print('Before ', a)
-a[2:7] = [99, 22, 14]
+a[2:7] = [99, 22, 14] # 슬라이스 대입
 print('After  ', a)
 
 
 # Example 10
 print('Before ', a)
-a[2:3] = [47, 11]
+a[2:3] = [47, 11] # 슬라이스 대입에서는 언패킹 대입 (e.g. a, b = c[:2])과 달리 길이 같을 필요 X
 print('After  ', a)
 
 
 # Example 11
-b = a[:]
+b = a[:] # 원래 리스트 복사한 새 리스트
 assert b == a and b is not a
-
 
 # Example 12
 b = a
@@ -128,4 +130,4 @@ print('Before b', b)
 a[:] = [101, 102, 103]
 assert a is b             # Still the same list object
 print('After a ', a)      # Now has different contents
-print('After b ', b)      # Same list, so same contents as a
+print('After b ', b)      # Same list, so same contents as a (같은 리스트 객체라서 a와 내용이 같음)

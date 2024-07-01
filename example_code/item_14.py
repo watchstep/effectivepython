@@ -110,7 +110,8 @@ power_tools = [
 saw = (5, 'circular saw')
 jackhammer = (40, 'jackhammer')
 assert not (jackhammer < saw)  # Matches expectations
-
+# tuple (sort에 필요한 __lt__ 정의 들어가 있음)
+# 각 index에 해당하는 원소를 한 번에 하나씩 비교 
 
 # Example 9
 drill = (4, 'drill')
@@ -118,10 +119,13 @@ sander = (4, 'sander')
 assert drill[0] == sander[0]  # Same weight
 assert drill[1] < sander[1]   # Alphabetically less
 assert drill < sander         # Thus, drill comes first
+# 첫 번째 위치의 값이 서로 같으면
+# tuple의 비교 메서드는 두 번째 서로 비교하는 방식
+# 두 번째도 같으면 세 번째 비교 반복
 
 
 # Example 10
-power_tools.sort(key=lambda x: (x.weight, x.name))
+power_tools.sort(key=lambda x: (x.weight, x.name)) # 먼저 weight로 정렬하고, 그 후 name으로 정렬
 print(power_tools)
 
 
@@ -132,7 +136,7 @@ print(power_tools)
 
 
 # Example 12
-power_tools.sort(key=lambda x: (-x.weight, x.name))
+power_tools.sort(key=lambda x: (-x.weight, x.name)) # 숫자인 경우 - 연산자 사용해서 정렬 순서 혼합 가능
 print(power_tools)
 
 
@@ -164,3 +168,13 @@ print(power_tools)
 power_tools.sort(key=lambda x: x.weight,
                  reverse=True)
 print(power_tools)
+
+# key 함수에 tuple 반환하면 여러 정렬 기준을 하나로 엮을 수 있음
+# 단항 부호 반전 연산자 (-)를 사용하면 부호를 바꿀 수 있는 타입이 정렬 기준인 경우
+# 정렬 순서를 반대로 바꿀 수 있음
+
+# 부호를 바꿀 수 없는 타입의 경우 여러 정렬 기준을 조합하려면
+# 각 정렬 기준마다 reverse 값으로 정렬 순서를 지정하면서 sort 메서드 여러 번 사용해야 함
+# 정렬 기준의 우선순위가 점점 높아지는 순서로 sort 호출해야함
+# e.g weight 내림차순 정렬 후 name에 의해 오름차순 정렬하고 싶으면
+# name 오름차순 정렬 후 weight 내림차순 정렬해야함 

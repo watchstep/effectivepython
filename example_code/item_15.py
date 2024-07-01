@@ -59,7 +59,7 @@ print(list(baby_names.keys()))
 print(list(baby_names.values()))
 print(list(baby_names.items()))
 print(baby_names.popitem())  # Last item inserted
-
+# popitem 마지막 itme 삭제하고, 반환
 
 # Example 6
 def my_func(**kwargs):
@@ -79,6 +79,8 @@ a = MyClass()
 for key, value in a.__dict__.items():
     print(f'{key} = {value}')
 
+# 키 삽입과 popitem 호출을 매우 자주 처리해야한다면
+# least-recently-used (LRU) 표준 dict보다 OrderedDict를 사용하는 것이 좋다
 
 # Example 9
 votes = {
@@ -91,7 +93,7 @@ votes = {
 # Example 10
 def populate_ranks(votes, ranks):
     names = list(votes.keys())
-    names.sort(key=votes.get, reverse=True)
+    names.sort(key=votes.get, reverse=True) # 투표수 기준으로 오름차순 정렬
     for i, name in enumerate(names, 1):
         ranks[name] = i
 
@@ -111,7 +113,8 @@ print(winner)
 
 # Example 13
 from collections.abc import MutableMapping
-
+# collections.abc 모듈을 사용해 dict와 비슷하지만
+# 내용을 알파벳 순서대로 iteration해주는 클래스를 새로 정의할 수 있다
 class SortedDict(MutableMapping):
     def __init__(self):
         self.data = {}

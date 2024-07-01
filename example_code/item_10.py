@@ -45,7 +45,9 @@ def close_open_files():
 
 atexit.register(close_open_files)
 
-
+# 대입식;assignment expression (왈러스 연산자;walrus operator) 사용해 반복 피하라
+# a = b (일반 대입문)
+# a := b (대입식) a 왈러스 b
 # Example 1
 fresh_fruit = {
     'apple': 10,
@@ -73,7 +75,7 @@ if count := fresh_fruit.get('lemon', 0):
     make_lemonade(count)
 else:
     out_of_stock()
-
+# 한 줄 더 짧아지고, count가 if문의 첫 번째 block에서만 의미 있다는 점이 명확히 보임
 
 # Example 4
 def make_cider(count):
@@ -87,6 +89,7 @@ else:
 
 
 # Example 5
+# 비교하기 위해 대입식 ()로 둘러싸기 
 if (count := fresh_fruit.get('apple', 0)) >= 4:
     make_cider(count)
 else:
@@ -214,10 +217,11 @@ FRUIT_TO_PICK = [
     {'orange': 3, 'melon': 2},
 ]
 
+# 무한 루프-중간에서 끝내기;loop-and-a-half
 bottles = []
-while True:                     # Loop
+while True:                     # Loop 무한 루프
     fresh_fruit = pick_fruit()
-    if not fresh_fruit:         # And a half
+    if not fresh_fruit:         # And a half 중간에서 끝내기
         break
     for fruit, count in fresh_fruit.items():
         batch = make_juice(fruit, count)

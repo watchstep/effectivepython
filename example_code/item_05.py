@@ -77,11 +77,12 @@ opacity = int(my_values.get('opacity', [''])[0] or 0)
 print(f'Red:     {red!r}')
 print(f'Green:   {green!r}')
 print(f'Opacity: {opacity!r}')
-
+# get 메서드는 dict 안에 key가 없을 때 두 번째 인자 반환
+# in 사용하고 key가 없을 때 KeyError 처리하기보다 get 사용
 
 # Example 5
 red_str = my_values.get('red', [''])
-red = int(red_str[0]) if red_str[0] else 0
+red = int(red_str[0]) if red_str[0] else 0 # red_str = ['5']
 green_str = my_values.get('green', [''])
 green = int(green_str[0]) if green_str[0] else 0
 opacity_str = my_values.get('opacity', [''])
@@ -89,7 +90,8 @@ opacity = int(opacity_str[0]) if opacity_str[0] else 0
 print(f'Red:     {red!r}')
 print(f'Green:   {green!r}')
 print(f'Opacity: {opacity!r}')
-
+# or/and 사용하면 가독성이 떨어짐
+# if/else 조건문 사용 추천
 
 # Example 6
 green_str = my_values.get('green', [''])

@@ -178,6 +178,8 @@ names.append(who)
 
 print(votes)
 
+# setdefault는 dict에서 key를 사용해 값을 가져오려고 시도하고
+# key가 없으면 default 값을 설정하고 반환한다
 
 # Example 11
 data = {}
@@ -187,12 +189,17 @@ data.setdefault(key, value)
 print('Before:', data)
 value.append('hello')
 print('After: ', data)
-
+# key가 없으면 setdefault에 전달된 디폴트 값이 별도로 복사되지 않고 딕셔너리에 직접 대입된다
+# key에 해당하는 default 값을 setdefault에 전달할 때마다 그 값을 새로 만들어야한다는 뜻
+# 호출할 때마다 리스트를 만들어야하므로 성능 저하될 수 있다
 
 # Example 12
 key = 'dutch crunch'
 
-count = counters.setdefault(key, 0)
+count = counters.setdefault(key, 0) # 여기서 setdefault 굳이 호출할 필요 없다 get 사용
 counters[key] = count + 1
 
 print(counters)
+
+# 문제에 dict의 setdefault 메섣 사용 방법이 가장 적합해보인다면
+# setdefault 대신 defaultdict 사용 고려해보자

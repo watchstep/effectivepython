@@ -73,7 +73,8 @@ for i in range(len(flavor_list)):
 it = enumerate(flavor_list)
 print(next(it))
 print(next(it))
-
+# enumerate는 iterator를 지연 계산 제너레이터;lazy generator로 감싸있음
+# loop index와 iterator의 다음 값으로 이뤄씬 쌍 넘겨줌 (yeild)
 
 # Example 5
 for i, flavor in enumerate(flavor_list):

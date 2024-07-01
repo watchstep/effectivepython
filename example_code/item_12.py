@@ -45,6 +45,7 @@ def close_open_files():
 
 atexit.register(close_open_files)
 
+# list[start:end:stride]
 
 # Example 1
 x = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
@@ -55,9 +56,9 @@ print(evens)
 
 
 # Example 2
-x = b'mongoose'
-y = x[::-1]
-print(y)
+x = b'mongoose' 
+y = x[::-1] # 역으로 뒤집기 
+print(y) # b'esoognom'
 
 
 # Example 3
@@ -97,3 +98,7 @@ z = y[1:-1]  # ['c', 'e']
 print(x)
 print(y)
 print(z)
+
+# 한 slice 안에서 시작, 끝, 증가값을 함께 사용하지 말라
+# 세 parameter 모두 사용해야하는 경우, 두 번 대입 사용 (한 번은 striding, 한 번은 slicing)
+# itertools.islice (시작, 끝, 증가값)에 음수 사용 불가능

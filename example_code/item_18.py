@@ -45,6 +45,7 @@ def close_open_files():
 
 atexit.register(close_open_files)
 
+# __missing__을 사용해 key에 따라 다른 default값 생성하는 방법 알아두자
 
 # Example 1
 pictures = {}
@@ -176,7 +177,6 @@ def open_picture(profile_path):
     except OSError:
         print(f'Failed to open path {profile_path}')
         raise
-
 class Pictures(dict):
     def __missing__(self, key):
         value = open_picture(key)
@@ -189,3 +189,9 @@ handle.seek(0)
 image_data = handle.read()
 print(pictures)
 print(image_data)
+
+# dict 타입의 하위 클래스를 만들고
+# __missing__ magic method를 구현하면
+# key가 없는 경우를 처리하는 로직을 커스텀화할 수 있다
+# 여기서는 open_picture 함수를 활용하는 새로운 Class를 정의해
+# key가 없는 경우 파일을 여는 dict 생성

@@ -67,6 +67,8 @@ print(oldest, second_oldest, others)
 # Example 3
 oldest, second_oldest, *others = car_ages_descending
 print(oldest, second_oldest, others)
+# index 사용하기보다 unpacking
+# * (starred expression) 사용하면 모든 값을 담는 unpacking할 수 있도록 지원
 
 
 # Example 4
@@ -86,6 +88,8 @@ except:
     logging.exception('Expected')
 else:
     assert False
+# *others = car_ages_descending 같이 별표 식만 사용해 unpacking할 수 없음
+# 필수인 부분 적어도 하나 있어야 함
 
 
 # Example 6
@@ -97,6 +101,8 @@ except:
     logging.exception('Expected')
 else:
     assert False
+# first, *middle, *second_middle, last = [1, 2, 3, 4] 같이
+# 한 수준의 unpacking 패턴에서 별표 식 두 개 이상 사용할 수 없음
 
 
 # Example 7
@@ -115,8 +121,8 @@ print(f'Best at {loc2} is {best2}, {len(rest2)} others')
 # Example 8
 short_list = [1, 2]
 first, second, *rest = short_list
-print(first, second, rest)
-
+print(first, second, rest) # 1 2 []
+# 별표 식은 항상 list instance를 반환하므로, rest는 빈 list가 됨
 
 # Example 9
 it = iter(range(1, 3))
